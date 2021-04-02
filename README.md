@@ -1,2 +1,2 @@
 # NodeJS
-Notes taken and code written learning while NodeJS
+Notes taken and code written while learning NodeJS
