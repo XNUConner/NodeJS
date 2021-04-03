@@ -86,7 +86,7 @@ function myFunction(parameter1, parameter2) {
 **Anonymous Function** <br />
 
 ### Async callback
-Callbacks (swift: completion handlers) aren't the preffered method of handling async code in swift: <br />
+Callbacks (swift: completion handlers) aren't the preffered method of handling async code in NodeJS: <br />
 ```javascript
 const request = require('request');
 const fs = require('fs');
