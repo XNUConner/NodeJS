@@ -129,7 +129,7 @@ function doRequest(request) {
     return new Promise( (resolve, reject) => {
         // Complete a web request
         let data = responseData
-        // Mark as resolved
+        // Mark as resolved, function will return responseData
         resolve(responseData)
     })
 }
@@ -159,6 +159,7 @@ axios.get('https://ghibliapi.herokuapp.com/films')
         console.error(`Could not save the Ghibli movies to a file: ${error}`);
     });
 ```
+`response` written inside `.then()` represents the return value of the async call above it. <br /> 
 If if any promise in the chain is rejected, program execution immediately jumps to the `.catch()` block. <br />
 
 ### Async & await
