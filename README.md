@@ -45,6 +45,13 @@ Options for `npm install` can be viewed with `npm help install` <br />
 Common options are `[-P|--save-prod|-D|--save-dev|-O|--save-optional] [-E|--save-exact] [-B|--save-bundle] [--no-save] [--dry-run]` <br />
 They can be used to change the dependency location in `package.json` <br />
 
+## Package use
+To use a package in code, we can initialize it like so: <br />
+```
+const axios = require('axios');
+const fs = require('fs');
+```
+
 ## Variable definitions
 ```
                           // Strings are immutable
@@ -63,8 +70,79 @@ text string`
 
 `my text ${expression} my text`
 
-myfunc`my text ${expression} my text`
+mytag`my text ${expression} my text`
 ```
 
-# Async promise chaining
+### Function syntax
+**Function** <br />
+```
+function myFunction(parameter1, parameter2) {
+  return val;
+}
+```
 
+**Arrow Function** <br />
+
+**Anonymous Function** <br />
+
+### Async callback
+Callbacks (swift: completion handlers) aren't the preffered method of handling async code in swift: <br />
+```
+const request = require('request');
+const fs = require('fs');
+
+request('https://ghibliapi.herokuapp.com/films', (error, response, body) => {
+    if (error) {
+        console.error(`Could not send request to API: ${error.message}`);
+        return;
+    }
+
+    if (response.statusCode != 200) {
+        console.error(`Expected status code 200 but received ${response.statusCode}.`);
+        return;
+    }
+
+    console.log('Processing our list of movies');
+    movies = JSON.parse(body);
+    let movieList = '';
+    movies.forEach(movie => {
+        movieList += `${movie['title']}, ${movie['release_date']}\n`;
+    });
+
+    fs.writeFile('callbackMovies.csv', movieList, (error) => {
+        if (error) {
+            console.error(`Could not save the Ghibli movies to a file: ${error}`);
+            return;
+        }
+
+        console.log('Saved our list of movies to callbackMovies.csv');
+    });
+});
+```
+callbacks aren't preferred because if an async function calls other async functions, multiple nested callbacks will be required, leading to messy code. <br />
+
+### Async promise chaining
+Rather than callbacks, promise chaining is preffered in NodeJS: <br />
+```
+const axios = require('axios');
+const fs = require('fs').promises;
+
+
+axios.get('https://ghibliapi.herokuapp.com/films')
+    .then((response) => {
+        console.log('Successfully retrieved our list of movies');
+        let movieList = '';
+        response.data.forEach(movie => {
+            movieList += `${movie['title']}, ${movie['release_date']}\n`;
+        });
+
+        return fs.writeFile('promiseMovies.csv', movieList);
+    })
+    .then(() => {
+        console.log('Saved our list of movies to promiseMovies.csv');
+    })
+    .catch((error) => {
+        console.error(`Could not save the Ghibli movies to a file: ${error}`);
+    });
+```
+If `response` is `undefined`, then program execution immediately jumps to the `.catch()` block. <br />
