@@ -2,7 +2,7 @@
 Notes taken and code written while learning NodeJS <br />
 
 ## Installation Process (linux-amd64)
-```
+```shell
 wget https://nodejs.org/dist/v14.16.0/node-v14.16.0-linux-x64.tar.xz
 sudo mkdir /usr/local/lib/node
 tar -xvf node-v14.16.0-linux-x64.tar.xz
@@ -29,7 +29,7 @@ undefined
 
 ## Package installation
 We can use `npm` to install node packages, much like Python's `pip` <br />
-```
+```javascript
 npm install axios // install axios into ./node_modules
 
 (or)
@@ -53,7 +53,7 @@ const fs = require('fs');
 ```
 
 ## Variable definitions
-```
+```javascript
                           // Strings are immutable
 const name = "XNUConner"  // Cannot be reassigned, scope: function
 let name = "XNUConner"    // Can be reassigned, scope: containing code block
@@ -61,7 +61,7 @@ var name = "XNUConner"    // Can be reassigned, scope: function
 ```
 
 ### String syntax
-```
+```javascript
 // Template literals
 `text`
 
@@ -75,7 +75,7 @@ mytag`my text ${expression} my text`
 
 ### Function syntax
 **Function** <br />
-```
+```javascript
 function myFunction(parameter1, parameter2) {
   return val;
 }
@@ -87,7 +87,7 @@ function myFunction(parameter1, parameter2) {
 
 ### Async callback
 Callbacks (swift: completion handlers) aren't the preffered method of handling async code in swift: <br />
-```
+```javascript
 const request = require('request');
 const fs = require('fs');
 
@@ -126,18 +126,18 @@ The `Promise()` function is used in async functions in order to have them return
 The function returns an immediate `Promise` object to represent an async call which returns `Pending`, `Fulfilled`, or `Rejected` <br />
 ```javascript
 function doRequest(request) {
-	return new Promise( (resolve, reject) => {
-		// Complete a web request
-		let data = responseData
-		// Mark as resolved
-		resolve(responseData)
-	})
+    return new Promise( (resolve, reject) => {
+        // Complete a web request
+        let data = responseData
+        // Mark as resolved
+        resolve(responseData)
+    })
 }
 ```
 
 ### Promise chaining
 Rather than callbacks, promise chaining is preffered in NodeJS: <br />
-```
+```javascript
 const axios = require('axios');
 const fs = require('fs').promises;
 
