@@ -159,4 +159,6 @@ axios.get('https://ghibliapi.herokuapp.com/films')
         console.error(`Could not save the Ghibli movies to a file: ${error}`);
     });
 ```
-If `response` is `undefined`, then program execution immediately jumps to the `.catch()` block. <br />
+If if any promise in the chain is rejected, program execution immediately jumps to the `.catch()` block. <br />
+
+### Async & await
