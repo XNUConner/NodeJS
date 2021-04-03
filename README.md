@@ -121,7 +121,21 @@ request('https://ghibliapi.herokuapp.com/films', (error, response, body) => {
 ```
 callbacks aren't preferred because if an async function calls other async functions, multiple nested callbacks will be required, leading to messy code. <br />
 
-### Async promise chaining
+### Promises
+The `Promise()` function is used in async functions in order to have them return as if they were synchronous. <br />
+The function returns an immediate `Promise` object to represent an async call which returns `Pending`, `Fulfilled`, or `Rejected` <br />
+```javascript
+function doRequest(request) {
+	return new Promise( (resolve, reject) => {
+		// Complete a web request
+		let data = responseData
+		// Mark as resolved
+		resolve(responseData)
+	})
+}
+```
+
+### Promise chaining
 Rather than callbacks, promise chaining is preffered in NodeJS: <br />
 ```
 const axios = require('axios');
