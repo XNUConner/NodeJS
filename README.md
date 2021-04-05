@@ -1,6 +1,13 @@
 # NodeJS
 Notes taken and code written while learning NodeJS <br />
 
+## What is NodeJS?
+- NodeJS is a server-side javascript interpreter. <br />
+- Javascript is typically run on the browser, facilitated by an engine, there are multiple engines, and Chrome uses V8. <br />
+- NodeJS was created by essentially ripping out Chrome's V8 engine and modifying it to run on an OS. <br />
+- Many NodeJS function calls become C++ function calls through NodeJS's [process binding loader](https://github.com/nodejs/node/blob/17a527ec07c69e063a2479a5a87df445a23e43ac/lib/internal/bootstrap/loaders.js). <br />
+- *V8 does not compile JS code into C++ binaries, it uses JIT interpretation.* <br />
+
 ## Installation Process (linux-amd64)
 ```shell
 wget https://nodejs.org/dist/v14.16.0/node-v14.16.0-linux-x64.tar.xz
