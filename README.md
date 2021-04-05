@@ -41,6 +41,42 @@ undefined
 >
 ```
 
+We can print all methods and properties of an object with: <br />
+`fs.<TAB>` <br />
+
+```
+> fs.
+fs.__defineGetter__      fs.__defineSetter__      fs.__lookupGetter__      fs.__lookupSetter__
+fs.__proto__             fs.constructor           fs.hasOwnProperty        fs.isPrototypeOf
+fs.propertyIsEnumerable  fs.toLocaleString        fs.toString              fs.valueOf
+
+fs.Dir                   fs.Dirent                fs.F_OK                  fs.FileReadStream
+fs.FileWriteStream       fs.R_OK                  fs.ReadStream            fs.Stats
+fs.W_OK                  fs.WriteStream           fs.X_OK                  fs._toUnixTimestamp
+fs.access                fs.accessSync            fs.appendFile            fs.appendFileSync
+fs.chmod                 fs.chmodSync             fs.chown                 fs.chownSync
+fs.close                 fs.closeSync             fs.constants             fs.copyFile
+fs.copyFileSync          fs.createReadStream      fs.createWriteStream     fs.exists
+fs.existsSync            fs.fchmod                fs.fchmodSync            fs.fchown
+fs.fchownSync            fs.fdatasync             fs.fdatasyncSync         fs.fstat
+fs.fstatSync             fs.fsync                 fs.fsyncSync             fs.ftruncate
+fs.ftruncateSync         fs.futimes               fs.futimesSync           fs.lchmod
+fs.lchmodSync            fs.lchown                fs.lchownSync            fs.link
+fs.linkSync              fs.lstat                 fs.lstatSync             fs.lutimes
+fs.lutimesSync           fs.mkdir                 fs.mkdirSync             fs.mkdtemp
+fs.mkdtempSync           fs.open                  fs.openSync              fs.opendir
+fs.opendirSync           fs.promises              fs.read                  fs.readFile
+fs.readFileSync          fs.readSync              fs.readdir               fs.readdirSync
+fs.readlink              fs.readlinkSync          fs.readv                 fs.readvSync
+fs.realpath              fs.realpathSync          fs.rename                fs.renameSync
+fs.rm                    fs.rmSync                fs.rmdir                 fs.rmdirSync
+fs.stat                  fs.statSync              fs.symlink               fs.symlinkSync
+fs.truncate              fs.truncateSync          fs.unlink                fs.unlinkSync
+fs.unwatchFile           fs.utimes                fs.utimesSync            fs.watch
+fs.watchFile             fs.write                 fs.writeFile             fs.writeFileSync
+fs.writeSync             fs.writev                fs.writevSync
+```
+
 ## Package installation
 We can use `npm` to install node packages, much like Python's `pip` <br />
 ```
@@ -205,4 +241,9 @@ process.on('SIGTERM', () => {
   process.exit(EXIT_CODE);
 })
 ```
-`process.kill(process.pid, 'SIGTERM')` - Kill current process with self-inflicted SIGTERM <br />
+`process.kill(process.pid, 'SIGTERM')` - Kill current process with self-inflicted SIGTERM. <br />
+*Note process does not have to be included with* `require()` <br />
+
+### Read environment variable
+You can replace `NODE_ENV` with any environment variable to be read. <br />
+`process.env.NODE_ENV // "development"`
