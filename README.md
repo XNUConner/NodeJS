@@ -128,11 +128,25 @@ mytag`my text ${expression} my text`
 **Function** <br />
 ```javascript
 function myFunction(parameter1, parameter2) {
-  return val;
+    return val;
 }
 ```
 
 **Arrow Function** <br />
+```javascript
+// An arrow function that accepts no arguments 
+let text = () => {
+    return "Hello World!";
+}
+
+// An arrow function that accepts an argument
+let incremented = (num) => {
+    return 1 + num;
+}
+
+// "return" can be implied in an arrow function
+let incremented = (num) => 1 + num;
+```
 
 **Anonymous Function** <br />
 
