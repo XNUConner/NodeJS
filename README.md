@@ -26,7 +26,7 @@ source ~/.bashrc
 ## REPL
 We have access to node's REPL mode, Read-Eval-Print-Loop <br />
 It is similar to Python IDLE. <br />
-```
+```javascript
 $ node
 > const name = "XNUConner"
 undefined
@@ -37,7 +37,7 @@ undefined
 
 ## Package installation
 We can use `npm` to install node packages, much like Python's `pip` <br />
-```javascript
+```
 npm install axios // install axios into ./node_modules
 
 (or)
@@ -56,7 +56,7 @@ Packages can have their modules used in code, see below. <br />
 
 ## Module use
 To use a module in code, we can initialize it like so: <br />
-```
+```javascript
 const axios = require('axios');
 const fs = require('fs');
 ```
