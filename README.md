@@ -44,9 +44,10 @@ package.json will automatically be updated to include `axios` as a dependency. <
 Options for `npm install` can be viewed with `npm help install` <br />
 Common options are `[-P|--save-prod|-D|--save-dev|-O|--save-optional] [-E|--save-exact] [-B|--save-bundle] [--no-save] [--dry-run]` <br />
 They can be used to change the dependency location in `package.json` <br />
+Packages can have their modules used in code, see below. <br />
 
-## Package use
-To use a package in code, we can initialize it like so: <br />
+## Module use
+To use a module in code, we can initialize it like so: <br />
 ```
 const axios = require('axios');
 const fs = require('fs');
@@ -55,7 +56,7 @@ const fs = require('fs');
 ## Variable definitions
 ```javascript
                           // Strings are immutable
-const name = "XNUConner"  // Cannot be reassigned, scope: function
+const name = "XNUConner"  // Type cannot change but contents actually can, scope: function
 let name = "XNUConner"    // Can be reassigned, scope: containing code block
 var name = "XNUConner"    // Can be reassigned, scope: function
 ```
@@ -135,7 +136,7 @@ function doRequest(request) {
 }
 ```
 
-### Promise chaining
+### Promise chaining (with .then())
 Rather than callbacks, promise chaining is preffered in NodeJS: <br />
 ```javascript
 const axios = require('axios');
@@ -162,4 +163,21 @@ axios.get('https://ghibliapi.herokuapp.com/films')
 `response` written inside `.then()` represents the return value of the async call above it. <br /> 
 If if any promise in the chain is rejected, program execution immediately jumps to the `.catch()` block. <br />
 
-### Async & await
+### Async await
+Even more concise than `.then()`, we can chain async function calls with the `async` and `await` keywords: <br />
+```javascript
+const axios = require()
+async function saveMovies() {
+    try {
+        const response = await axios.get('https://ghibliapi.herokuapp.com/films');
+        let movieList = '';
+        response.data.forEach(movie => {
+            movieList += `${movie['title']}, ${movie['release_date']}\n`;
+        });
+        await fs.writeFile('asyncAwaitMovies.csv', movieList);
+    } catch (error) {
+        console.error(`Could not save the Ghibli movies to a file: ${error}`);
+    }
+}
+```
+This makes our NodeJS code look more like a typical function, much easier to read. <br />
