@@ -189,3 +189,14 @@ async function saveMovies() {
 }
 ```
 This makes our NodeJS code look more like a typical function, much easier to read. <br />
+
+### Ending a NodeJS process
+`process.exit(1)` - Exit current process with exit code 1 <br />
+Exit process on POSIX signal: <br />
+```
+process.on('SIGTERM', () => {
+  // Do cleanup first 
+  process.exit(EXIT_CODE);
+})
+```
+`process.kill(process.pid, 'SIGTERM')` - Kill current process with self-inflicted SIGTERM <br />
