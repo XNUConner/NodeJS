@@ -23,6 +23,12 @@ echo PATH=$NODEJS_HOME/bin:$PATH
 source ~/.bashrc 
 ```
 
+## Starting a NodeJS process
+Enter this in shell, typically `entrypoint.js` will be `app.js` <br />
+```
+$ node entrypoint.js
+```
+
 ## REPL
 We have access to node's REPL mode, Read-Eval-Print-Loop <br />
 It is similar to Python IDLE. <br />
@@ -193,7 +199,7 @@ This makes our NodeJS code look more like a typical function, much easier to rea
 ### Ending a NodeJS process
 `process.exit(1)` - Exit current process with exit code 1 <br />
 Exit process on POSIX signal: <br />
-```
+```javascript
 process.on('SIGTERM', () => {
   // Do cleanup first 
   process.exit(EXIT_CODE);
