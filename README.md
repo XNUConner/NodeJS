@@ -6,7 +6,8 @@ Notes taken and code written while learning NodeJS <br />
 - Javascript is typically run on the browser, facilitated by an engine, there are multiple engines, and Chrome uses V8. <br />
 - NodeJS was created by essentially ripping out Chrome's V8 engine and modifying it to run on an OS. <br />
 - Many NodeJS function calls become C++ function calls through NodeJS's [process binding loader](https://github.com/nodejs/node/blob/17a527ec07c69e063a2479a5a87df445a23e43ac/lib/internal/bootstrap/loaders.js). <br />
-- *V8 does not compile JS code into C++ binaries, it uses JIT interpretation.* <br />
+- NodeJS processes' run on single threads, there is no same-process multithreading due to how the V8 engine was built. <br />
+- *V8 does not precompile JS code into C++ binaries, it uses JIT compilation.* <br />
 
 ## Installation Process (linux-amd64)
 ```shell
